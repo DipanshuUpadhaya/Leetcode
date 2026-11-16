@@ -20,16 +20,29 @@ public:
 
 
 
-        // using unordered map
-        unordered_map<int,int>mp;
+        // // using unordered map
+        // unordered_map<int,int>mp;
+        // for(int num:nums){
+        //     mp[num]++;
+        // }
+        // for(auto it:mp){
+        //     if(it.second==1){
+        //         return it.first;
+        //     }
+        // }
+        // return -1;
+
+
+        // using unordered set
+        unordered_set<int>st;
         for(int num:nums){
-            mp[num]++;
-        }
-        for(auto it:mp){
-            if(it.second==1){
-                return it.first;
+            if(st.find(num)!=st.end()){
+                st.erase(num);
+            }
+            else{
+                st.insert(num);
             }
         }
-        return -1;
+        return *st.begin();
     }
 };
