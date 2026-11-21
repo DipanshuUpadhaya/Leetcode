@@ -1,23 +1,40 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        vector<int>ans;
+        // vector<int>ans;
+        // int n=nums.size();
+        // int count=1;
+        // for (int i=0;i<n;i++){
+        //    if(i>0 && nums[i]==nums[i-1] ){
+        //     count++;
+        //    }
+        //    else{
+        //     count=1;
+        //    }
+        //    if(count<=2){
+        //     ans.push_back(nums[i]);
+        //    }
+        // }
+        // for(int i=0;i<ans.size();i++){
+        //     nums[i]=ans[i];
+        // }
+        // return ans.size();
+
+
+        // using 2 pointer
         int n=nums.size();
-        int count=1;
-        for (int i=0;i<n;i++){
-           if(i>0 && nums[i]==nums[i-1] ){
-            count++;
-           }
-           else{
-            count=1;
-           }
-           if(count<=2){
-            ans.push_back(nums[i]);
-           }
+        int i=2;
+        int k=2;
+        if(n<2){
+            return n;
         }
-        for(int i=0;i<ans.size();i++){
-            nums[i]=ans[i];
+        while(i<n){
+            if(nums[i]!=nums[k-2]){
+                nums[k]=nums[i];
+                k++;
+            }
+            i++;
         }
-        return ans.size();
+        return k;
     }
 };
